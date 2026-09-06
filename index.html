@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>صوت الجزائر | Voix de l'Algérie</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7f6;
+      color: #17201b;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #006633;
+    }
+
+    .lang-btn {
+      border: 1px solid #006633;
+      background: white;
+      color: #006633;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .flag {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      color: #66736c;
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .question {
+      font-size: 25px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .option {
+      display: block;
+      border: 2px solid #e2e7e4;
+      border-radius: 12px;
+      padding: 17px;
+      margin: 12px 0;
+      cursor: pointer;
+      transition: 0.2s;
+      background: white;
+    }
+
+    .option:hover {
+      border-color: #006633;
+      background: #f5faf7;
+    }
+
+    .option input {
+      margin-left: 10px;
+      accent-color: #006633;
+    }
+
+    .vote-btn {
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      border: none;
+      border-radius: 12px;
+      background: #006633;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .vote-btn:hover {
+      background: #004d26;
+    }
+
+    .results {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .result-row {
+      margin: 18px 0;
+    }
+
+    .result-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    .bar {
+      height: 13px;
+      background: #e8ecea;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: #006633;
+      border-radius: 20px;
+    }
+
+    .notice {
+      margin-top: 25px;
+      padding: 15px;
+      background: #f1f4f2;
+      border-radius: 10px;
+      color: #5e6963;
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      color: #7b847f;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        margin: 25px auto;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .question {
+        font-size: 21px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">
+    🇩🇿 <span id="logoText">صوت الجزائر</span>
+  </div>
+
+  <button class="lang-btn" onclick="toggleLanguage()">
+    Français
+  </button>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="flag">🇩🇿</div>
+
+    <h1 id="title">
+      صوت الجزائر
+    </h1>
+
+    <p class="subtitle" id="subtitle">
+      منصة مستقلة لاستطلاعات الرأي حول القضايا التي تهم المجتمع الجزائري.
+    </p>
+  </section>
+
+  <section class="card">
+
+    <div class="question" id="question">
+      ما رأيك في عقوبة الإعدام في الجزائر؟
+    </div>
+
+    <label class="option">
+      <input type="radio" name="vote" value="execute">
+      <span id="option1">أؤيد تنفيذ عقوبة الإعدام</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="vote" value="moratorium">
+      <span id="option2">أؤيد الإبقاء عليها دون تنفيذ</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="vote" value="abolish">
+      <span id="option3">أؤيد إلغاء عقوبة الإعدام نهائيًا</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="vote" value="unknown">
+      <span id="option4">لا أعرف / لا موقف لدي</span>
+    </label>
+
+    <button class="vote-btn" onclick="vote()" id="voteButton">
+      صوّت الآن
+    </button>
+
+    <div class="results" id="results">
+
+      <h2 id="resultsTitle">📊 النتائج</h2>
+
+      <div class="result-row">
+        <div class="result-info">
+          <span id="r1">أؤيد تنفيذ عقوبة الإعدام</span>
+          <span>0%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-info">
+          <span id="r2">الإبقاء عليها دون تنفيذ</span>
+          <span>0%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-info">
+          <span id="r3">إلغاؤها نهائيًا</span>
+          <span>0%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-info">
+          <span id="r4">لا أعرف / لا موقف لدي</span>
+          <span>0%</span>
+        </div>
+        <div class="bar">
+          <div class="fill" style="width:0%"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="notice" id="notice">
+      هذا استطلاع رأي إلكتروني مستقل، وليس استفتاءً رسميًا ولا يمثل موقف الحكومة الجزائرية.
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 صوت الجزائر — Sawt El Djazair
+</footer>
+
+<script>
+
+let french = false;
+
+function toggleLanguage() {
+
+  french = !french;
+
+  document.documentElement.dir = french ? "ltr" : "rtl";
+  document.documentElement.lang = french ? "fr" : "ar";
+
+  document.querySelector(".lang-btn").textContent =
+    french ? "العربية" : "Français";
+
+  document.getElementById("logoText").textContent =
+    french ? "Voix de l'Algérie" : "صوت الجزائر";
+
+  document.getElementById("title").textContent =
+    french ? "Voix de l'Algérie" : "صوت الجزائر";
+
+  document.getElementById("subtitle").textContent =
+    french
+      ? "Une plateforme indépendante de sondages sur les questions qui concernent la société algérienne."
+      : "منصة مستقلة لاستطلاعات الرأي حول القضايا التي تهم المجتمع الجزائري.";
+
+  document.getElementById("question").textContent =
+    french
+      ? "Quelle est votre opinion sur la peine de mort en Algérie ?"
+      : "ما رأيك في عقوبة الإعدام في الجزائر؟";
+
+  document.getElementById("option1").textContent =
+    french ? "Je suis favorable à l'exécution de la peine de mort"
+           : "أؤيد تنفيذ عقوبة الإعدام";
+
+  document.getElementById("option2").textContent =
+    french ? "Je suis favorable à son maintien sans exécution"
+           : "أؤيد الإبقاء عليها دون تنفيذ";
+
+  document.getElementById("option3").textContent =
+    french ? "Je suis favorable à l'abolition définitive de la peine de mort"
+           : "أؤيد إلغاء عقوبة الإعدام نهائيًا";
+
+  document.getElementById("option4").textContent =
+    french ? "Je ne sais pas / Je n'ai pas d'avis"
+           : "لا أعرف / لا موقف لدي";
+
+  document.getElementById("voteButton").textContent =
+    french ? "Voter maintenant" : "صوّت الآن";
+
+  document.getElementById("resultsTitle").textContent =
+    french ? "📊 Résultats" : "📊 النتائج";
+
+  document.getElementById("notice").textContent =
+    french
+      ? "Ceci est un sondage d'opinion indépendant en ligne. Il ne constitue pas un référendum officiel et ne représente pas la position du gouvernement algérien."
+      : "هذا استطلاع رأي إلكتروني مستقل، وليس استفتاءً رسميًا ولا يمثل موقف الحكومة الجزائرية.";
+
+}
+
+function vote() {
+
+  const selected = document.querySelector('input[name="vote"]:checked');
+
+  if (!selected) {
+    alert(
+      french
+        ? "Veuillez choisir une réponse."
+        : "يرجى اختيار إجابة."
+    );
+    return;
+  }
+
+  document.getElementById("results").style.display = "block";
+
+  document.getElementById("results").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+</script>
+
+</body>
+</html>
