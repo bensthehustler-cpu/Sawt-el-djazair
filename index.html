@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,6 +128,11 @@
       background: #004d26;
     }
 
+    .vote-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     .results {
       display: none;
       margin-top: 30px;
@@ -154,6 +160,7 @@
       height: 100%;
       background: #006633;
       border-radius: 20px;
+      transition: width 0.5s ease;
     }
 
     .notice {
@@ -175,6 +182,7 @@
     }
 
     @media (max-width: 600px) {
+
       main {
         margin: 25px auto;
       }
@@ -197,6 +205,7 @@
 <body>
 
 <header>
+
   <div class="logo">
     🇩🇿 <span id="logoText">صوت الجزائر</span>
   </div>
@@ -204,11 +213,14 @@
   <button class="lang-btn" onclick="toggleLanguage()">
     Français
   </button>
+
 </header>
+
 
 <main>
 
   <section class="hero">
+
     <div class="flag">🇩🇿</div>
 
     <h1 id="title">
@@ -218,7 +230,9 @@
     <p class="subtitle" id="subtitle">
       منصة مستقلة لاستطلاعات الرأي حول القضايا التي تهم المجتمع الجزائري.
     </p>
+
   </section>
+
 
   <section class="card">
 
@@ -226,167 +240,655 @@
       ما رأيك في عقوبة الإعدام في الجزائر؟
     </div>
 
-    <label class="option">
-      <input type="radio" name="vote" value="execute">
-      <span id="option1">أؤيد تنفيذ عقوبة الإعدام</span>
-    </label>
 
     <label class="option">
-      <input type="radio" name="vote" value="moratorium">
-      <span id="option2">أؤيد الإبقاء عليها دون تنفيذ</span>
+
+      <input
+        type="radio"
+        name="vote"
+        value="execute"
+      >
+
+      <span id="option1">
+        أؤيد تنفيذ عقوبة الإعدام
+      </span>
+
     </label>
+
 
     <label class="option">
-      <input type="radio" name="vote" value="abolish">
-      <span id="option3">أؤيد إلغاء عقوبة الإعدام نهائيًا</span>
+
+      <input
+        type="radio"
+        name="vote"
+        value="moratorium"
+      >
+
+      <span id="option2">
+        أؤيد الإبقاء عليها دون تنفيذ
+      </span>
+
     </label>
+
 
     <label class="option">
-      <input type="radio" name="vote" value="unknown">
-      <span id="option4">لا أعرف / لا موقف لدي</span>
+
+      <input
+        type="radio"
+        name="vote"
+        value="abolish"
+      >
+
+      <span id="option3">
+        أؤيد إلغاء عقوبة الإعدام نهائيًا
+      </span>
+
     </label>
 
-    <button class="vote-btn" onclick="vote()" id="voteButton">
+
+    <label class="option">
+
+      <input
+        type="radio"
+        name="vote"
+        value="unknown"
+      >
+
+      <span id="option4">
+        لا أعرف / لا موقف لدي
+      </span>
+
+    </label>
+
+
+    <button
+      class="vote-btn"
+      onclick="vote()"
+      id="voteButton"
+    >
       صوّت الآن
     </button>
 
+
     <div class="results" id="results">
 
-      <h2 id="resultsTitle">📊 النتائج</h2>
+      <h2 id="resultsTitle">
+        📊 النتائج
+      </h2>
+
 
       <div class="result-row">
+
         <div class="result-info">
-          <span id="r1">أؤيد تنفيذ عقوبة الإعدام</span>
-          <span>0%</span>
+
+          <span id="r1">
+            أؤيد تنفيذ عقوبة الإعدام
+          </span>
+
+          <span id="p1">
+            0%
+          </span>
+
         </div>
+
         <div class="bar">
-          <div class="fill" style="width:0%"></div>
+
+          <div
+            class="fill"
+            id="bar1"
+            style="width:0%"
+          ></div>
+
         </div>
+
       </div>
 
-      <div class="result-row">
-        <div class="result-info">
-          <span id="r2">الإبقاء عليها دون تنفيذ</span>
-          <span>0%</span>
-        </div>
-        <div class="bar">
-          <div class="fill" style="width:0%"></div>
-        </div>
-      </div>
 
       <div class="result-row">
+
         <div class="result-info">
-          <span id="r3">إلغاؤها نهائيًا</span>
-          <span>0%</span>
+
+          <span id="r2">
+            الإبقاء عليها دون تنفيذ
+          </span>
+
+          <span id="p2">
+            0%
+          </span>
+
         </div>
+
         <div class="bar">
-          <div class="fill" style="width:0%"></div>
+
+          <div
+            class="fill"
+            id="bar2"
+            style="width:0%"
+          ></div>
+
         </div>
+
       </div>
 
+
       <div class="result-row">
+
         <div class="result-info">
-          <span id="r4">لا أعرف / لا موقف لدي</span>
-          <span>0%</span>
+
+          <span id="r3">
+            إلغاؤها نهائيًا
+          </span>
+
+          <span id="p3">
+            0%
+          </span>
+
         </div>
+
         <div class="bar">
-          <div class="fill" style="width:0%"></div>
+
+          <div
+            class="fill"
+            id="bar3"
+            style="width:0%"
+          ></div>
+
         </div>
+
+      </div>
+
+
+      <div class="result-row">
+
+        <div class="result-info">
+
+          <span id="r4">
+            لا أعرف / لا موقف لدي
+          </span>
+
+          <span id="p4">
+            0%
+          </span>
+
+        </div>
+
+        <div class="bar">
+
+          <div
+            class="fill"
+            id="bar4"
+            style="width:0%"
+          ></div>
+
+        </div>
+
       </div>
 
     </div>
 
+
     <div class="notice" id="notice">
+
       هذا استطلاع رأي إلكتروني مستقل، وليس استفتاءً رسميًا ولا يمثل موقف الحكومة الجزائرية.
+
     </div>
 
   </section>
 
 </main>
 
+
 <footer>
+
   © 2026 صوت الجزائر — Sawt El Djazair
+
 </footer>
+
+
+<!-- ================================= -->
+<!-- SUPABASE -->
+<!-- ================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
-let french = false;
+  /*
+   * =========================================
+   * SUPABASE SETTINGS
+   * =========================================
+   *
+   * ضع بيانات مشروعك هنا
+   */
 
-function toggleLanguage() {
+  const SUPABASE_URL =
+    "ضع_رابط_مشروع_Supabase_هنا";
 
-  french = !french;
+  const SUPABASE_ANON_KEY =
+    "ضع_مفتاح_anon_أو_publishable_هنا";
 
-  document.documentElement.dir = french ? "ltr" : "rtl";
-  document.documentElement.lang = french ? "fr" : "ar";
 
-  document.querySelector(".lang-btn").textContent =
-    french ? "العربية" : "Français";
-
-  document.getElementById("logoText").textContent =
-    french ? "Voix de l'Algérie" : "صوت الجزائر";
-
-  document.getElementById("title").textContent =
-    french ? "Voix de l'Algérie" : "صوت الجزائر";
-
-  document.getElementById("subtitle").textContent =
-    french
-      ? "Une plateforme indépendante de sondages sur les questions qui concernent la société algérienne."
-      : "منصة مستقلة لاستطلاعات الرأي حول القضايا التي تهم المجتمع الجزائري.";
-
-  document.getElementById("question").textContent =
-    french
-      ? "Quelle est votre opinion sur la peine de mort en Algérie ?"
-      : "ما رأيك في عقوبة الإعدام في الجزائر؟";
-
-  document.getElementById("option1").textContent =
-    french ? "Je suis favorable à l'exécution de la peine de mort"
-           : "أؤيد تنفيذ عقوبة الإعدام";
-
-  document.getElementById("option2").textContent =
-    french ? "Je suis favorable à son maintien sans exécution"
-           : "أؤيد الإبقاء عليها دون تنفيذ";
-
-  document.getElementById("option3").textContent =
-    french ? "Je suis favorable à l'abolition définitive de la peine de mort"
-           : "أؤيد إلغاء عقوبة الإعدام نهائيًا";
-
-  document.getElementById("option4").textContent =
-    french ? "Je ne sais pas / Je n'ai pas d'avis"
-           : "لا أعرف / لا موقف لدي";
-
-  document.getElementById("voteButton").textContent =
-    french ? "Voter maintenant" : "صوّت الآن";
-
-  document.getElementById("resultsTitle").textContent =
-    french ? "📊 Résultats" : "📊 النتائج";
-
-  document.getElementById("notice").textContent =
-    french
-      ? "Ceci est un sondage d'opinion indépendant en ligne. Il ne constitue pas un référendum officiel et ne représente pas la position du gouvernement algérien."
-      : "هذا استطلاع رأي إلكتروني مستقل، وليس استفتاءً رسميًا ولا يمثل موقف الحكومة الجزائرية.";
-
-}
-
-function vote() {
-
-  const selected = document.querySelector('input[name="vote"]:checked');
-
-  if (!selected) {
-    alert(
-      french
-        ? "Veuillez choisir une réponse."
-        : "يرجى اختيار إجابة."
+  const supabaseClient =
+    window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
     );
-    return;
+
+
+  /*
+   * =========================================
+   * LANGUAGE
+   * =========================================
+   */
+
+  let french = false;
+
+
+  function toggleLanguage() {
+
+    french = !french;
+
+
+    document.documentElement.dir =
+      french ? "ltr" : "rtl";
+
+
+    document.documentElement.lang =
+      french ? "fr" : "ar";
+
+
+    document.querySelector(".lang-btn").textContent =
+      french ? "العربية" : "Français";
+
+
+    document.getElementById("logoText").textContent =
+      french
+        ? "Voix de l'Algérie"
+        : "صوت الجزائر";
+
+
+    document.getElementById("title").textContent =
+      french
+        ? "Voix de l'Algérie"
+        : "صوت الجزائر";
+
+
+    document.getElementById("subtitle").textContent =
+      french
+
+        ? "Une plateforme indépendante de sondages sur les questions qui concernent la société algérienne."
+
+        : "منصة مستقلة لاستطلاعات الرأي حول القضايا التي تهم المجتمع الجزائري.";
+
+
+    document.getElementById("question").textContent =
+      french
+
+        ? "Quelle est votre opinion sur la peine de mort en Algérie ?"
+
+        : "ما رأيك في عقوبة الإعدام في الجزائر؟";
+
+
+    document.getElementById("option1").textContent =
+      french
+
+        ? "Je suis favorable à l'exécution de la peine de mort"
+
+        : "أؤيد تنفيذ عقوبة الإعدام";
+
+
+    document.getElementById("option2").textContent =
+      french
+
+        ? "Je suis favorable à son maintien sans exécution"
+
+        : "أؤيد الإبقاء عليها دون تنفيذ";
+
+
+    document.getElementById("option3").textContent =
+      french
+
+        ? "Je suis favorable à l'abolition définitive de la peine de mort"
+
+        : "أؤيد إلغاء عقوبة الإعدام نهائيًا";
+
+
+    document.getElementById("option4").textContent =
+      french
+
+        ? "Je ne sais pas / Je n'ai pas d'avis"
+
+        : "لا أعرف / لا موقف لدي";
+
+
+    document.getElementById("voteButton").textContent =
+      french
+        ? "Voter maintenant"
+        : "صوّت الآن";
+
+
+    document.getElementById("resultsTitle").textContent =
+      french
+        ? "📊 Résultats"
+        : "📊 النتائج";
+
+
+    document.getElementById("r1").textContent =
+      french
+        ? "Favorable à l'exécution"
+        : "أؤيد تنفيذ عقوبة الإعدام";
+
+
+    document.getElementById("r2").textContent =
+      french
+        ? "Maintien sans exécution"
+        : "الإبقاء عليها دون تنفيذ";
+
+
+    document.getElementById("r3").textContent =
+      french
+        ? "Abolition définitive"
+        : "إلغاؤها نهائيًا";
+
+
+    document.getElementById("r4").textContent =
+      french
+        ? "Je ne sais pas / Pas d'avis"
+        : "لا أعرف / لا موقف لدي";
+
+
+    document.getElementById("notice").textContent =
+      french
+
+        ? "Ceci est un sondage d'opinion indépendant en ligne. Il ne constitue pas un référendum officiel et ne représente pas la position du gouvernement algérien."
+
+        : "هذا استطلاع رأي إلكتروني مستقل، وليس استفتاءً رسميًا ولا يمثل موقف الحكومة الجزائرية.";
+
   }
 
-  document.getElementById("results").style.display = "block";
 
-  document.getElementById("results").scrollIntoView({
-    behavior: "smooth"
-  });
 
-}
+  /*
+   * =========================================
+   * SUBMIT VOTE
+   * =========================================
+   */
+
+  async function vote() {
+
+    const selected =
+      document.querySelector(
+        'input[name="vote"]:checked'
+      );
+
+
+    if (!selected) {
+
+      alert(
+        french
+          ? "Veuillez choisir une réponse."
+          : "يرجى اختيار إجابة."
+      );
+
+      return;
+    }
+
+
+    const button =
+      document.getElementById("voteButton");
+
+
+    button.disabled = true;
+
+
+    button.textContent =
+      french
+        ? "Envoi..."
+        : "جاري إرسال التصويت...";
+
+
+    /*
+     * إرسال التصويت إلى Supabase
+     */
+
+    const { error } =
+      await supabaseClient
+        .from("votes")
+        .insert({
+          choice: selected.value
+        });
+
+
+    /*
+     * إذا حدث خطأ
+     */
+
+    if (error) {
+
+      console.error(
+        "Supabase vote error:",
+        error
+      );
+
+
+      alert(
+        french
+
+          ? "Une erreur est survenue. Veuillez réessayer."
+
+          : "حدث خطأ أثناء إرسال التصويت. حاول مرة أخرى."
+      );
+
+
+      button.disabled = false;
+
+
+      button.textContent =
+        french
+          ? "Voter maintenant"
+          : "صوّت الآن";
+
+
+      return;
+    }
+
+
+    /*
+     * التصويت نجح
+     */
+
+    await loadResults();
+
+
+    document.getElementById("results").style.display =
+      "block";
+
+
+    button.textContent =
+      french
+        ? "Vote enregistré ✓"
+        : "تم تسجيل التصويت ✓";
+
+
+    document.getElementById("results").scrollIntoView({
+      behavior: "smooth"
+    });
+
+  }
+
+
+
+  /*
+   * =========================================
+   * LOAD RESULTS
+   * =========================================
+   */
+
+  async function loadResults() {
+
+    const { data, error } =
+      await supabaseClient
+        .from("votes")
+        .select("choice");
+
+
+    if (error) {
+
+      console.error(
+        "Supabase results error:",
+        error
+      );
+
+      return;
+    }
+
+
+    /*
+     * عدّ الأصوات
+     */
+
+    const counts = {
+
+      execute: 0,
+
+      moratorium: 0,
+
+      abolish: 0,
+
+      unknown: 0
+
+    };
+
+
+    data.forEach(row => {
+
+      if (
+        Object.prototype.hasOwnProperty.call(
+          counts,
+          row.choice
+        )
+      ) {
+
+        counts[row.choice]++;
+
+      }
+
+    });
+
+
+    const total = data.length;
+
+
+    /*
+     * حساب النسب
+     */
+
+    const percentages = {
+
+      execute:
+        total > 0
+          ? Math.round(
+              (counts.execute / total) * 100
+            )
+          : 0,
+
+
+      moratorium:
+        total > 0
+          ? Math.round(
+              (counts.moratorium / total) * 100
+            )
+          : 0,
+
+
+      abolish:
+        total > 0
+          ? Math.round(
+              (counts.abolish / total) * 100
+            )
+          : 0,
+
+
+      unknown:
+        total > 0
+          ? Math.round(
+              (counts.unknown / total) * 100
+            )
+          : 0
+
+    };
+
+
+    /*
+     * تحديث النتائج
+     */
+
+    updateResult(
+      "p1",
+      "bar1",
+      percentages.execute
+    );
+
+
+    updateResult(
+      "p2",
+      "bar2",
+      percentages.moratorium
+    );
+
+
+    updateResult(
+      "p3",
+      "bar3",
+      percentages.abolish
+    );
+
+
+    updateResult(
+      "p4",
+      "bar4",
+      percentages.unknown
+    );
+
+  }
+
+
+
+  /*
+   * =========================================
+   * UPDATE RESULT
+   * =========================================
+   */
+
+  function updateResult(
+    percentageId,
+    barId,
+    percentage
+  ) {
+
+    document.getElementById(
+      percentageId
+    ).textContent =
+      percentage + "%";
+
+
+    document.getElementById(
+      barId
+    ).style.width =
+      percentage + "%";
+
+  }
+
+
+
+  /*
+   * =========================================
+   * LOAD EXISTING RESULTS
+   * =========================================
+   */
+
+  loadResults();
 
 </script>
 
